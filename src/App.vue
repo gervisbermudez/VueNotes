@@ -1,29 +1,27 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Nav/>
     <router-view/>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+<script>
+import Nav from "./components/Nav.vue";
+import Notes from "./components/Notes.vue";
+import $ from "jquery";
+
+export default {
+  name: "App",
+  components: {
+    Nav
+  },
+  mounted: function() {
+    var elems = document.querySelectorAll(".sidenav");
+    var instances = M.Sidenav.init(elems, {});
   }
-}
+};
+</script>
+
+
+<style lang="scss">
 </style>
