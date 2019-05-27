@@ -1,19 +1,21 @@
 <template>
-  <div class="home">
-    <Notes></Notes>
+  <div class="home container">
+    <Notes/>
+    <FloatingButton/>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import Notes from "@/components/Notes.vue";
 import NoteCard from "@/components/NoteCard.vue";
+import FloatingButton from "@/components/FloatingButton.vue";
 
 export default {
   name: "home",
   components: {
     Notes,
-    NoteCard
+    NoteCard,
+    FloatingButton
   }
 };
 </script>

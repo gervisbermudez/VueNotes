@@ -9,19 +9,20 @@
 import Nav from "./components/Nav.vue";
 import Notes from "./components/Notes.vue";
 import $ from "jquery";
+import { mapActions } from "vuex";
 
 export default {
   name: "App",
   components: {
     Nav
   },
+  methods: {
+    getnotes() {},
+    ...mapActions["getLocalNotes"]
+  },
   mounted: function() {
-    var elems = document.querySelectorAll(".sidenav");
-    var instances = M.Sidenav.init(elems, {});
+    M.AutoInit();
+    this.$store.dispatch("getLocalNotes");
   }
 };
 </script>
-
-
-<style lang="scss">
-</style>

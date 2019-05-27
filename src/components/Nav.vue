@@ -11,7 +11,7 @@
             <router-link to="/">Home</router-link>
           </li>
           <li>
-            <router-link to="/about">About</router-link>
+            <router-link to="/about">Nueva</router-link>
           </li>
         </ul>
       </div>
@@ -21,7 +21,7 @@
         <router-link to="/">Home</router-link>
       </li>
       <li>
-        <router-link to="/about">About</router-link>
+        <router-link to="/about">Nueva</router-link>
       </li>
     </ul>
   </div>
@@ -29,12 +29,6 @@
 
 <script>
 export default {
-  name: "Nav",
-  props: {
-    msg: String
-  }
+  name: "Nav"
 };
 </script>
-
-<style>
-</style>
