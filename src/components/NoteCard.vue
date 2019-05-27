@@ -1,11 +1,11 @@
 <template>
-  <div class="card blue-grey darken-1">
-    <div class="card-content white-text" @click="viewNote">
+  <div class="card" :class="note.color">
+    <div class="card-content" @click="viewNote">
       <span class="card-title">{{note.title}}</span>
       <p v-if="note.text">{{note.text}}</p>
     </div>
     <div class="card-action">
-      <a href="#" @click="remove(note.id)">Delete Note</a>
+      <a href="#" class="black-text" @click="remove(note.id)">Delete Note</a>
     </div>
   </div>
 </template>

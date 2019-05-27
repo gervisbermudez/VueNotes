@@ -9,6 +9,36 @@
       <textarea id="textarea1" v-model="note.text" class="materialize-textarea"></textarea>
       <label for="textarea1">Nota</label>
     </div>
+    <p>
+      <label>
+        <input name="group1" v-model="note.color" type="radio" checked value="light-blue lighten-2">
+        <span>Blue</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name="group1" v-model="note.color" type="radio" value="light-green">
+        <span>Green</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input
+          class="with-gap"
+          name="group1"
+          v-model="note.color"
+          type="radio"
+          value="yellow lighten-2"
+        >
+        <span>Yellow</span>
+      </label>
+    </p>
+    <p>
+      <label>
+        <input name="group1" v-model="note.color" type="radio" value="orange lighten-1">
+        <span>Orange</span>
+      </label>
+    </p>
     <a @click="save" class="waves-effect waves-light btn-small">
       <Icon name="save" class="material-icons left"/>Guardar
     </a>
@@ -30,6 +60,7 @@ export default {
       note: {
         title: null,
         text: null,
+        color: "",
         id: null
       }
     };

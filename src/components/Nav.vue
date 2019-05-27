@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav>
+    <nav class="blue darken-1">
       <div class="nav-wrapper">
         <a href="#" class="brand-logo">Logo</a>
         <a href="#" data-target="slide-out" class="sidenav-trigger">
