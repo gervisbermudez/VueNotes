@@ -1,18 +1,18 @@
 <template>
-  <div class="card blue-grey darken-1" @click="viewNote">
-    <div class="card-content white-text">
+  <div class="card blue-grey darken-1">
+    <div class="card-content white-text" @click="viewNote">
       <span class="card-title">{{note.title}}</span>
-      <p>{{note.text}}</p>
+      <p v-if="note.text">{{note.text}}</p>
     </div>
     <div class="card-action">
-      <a href="#">This is a link</a>
-      <a href="#">This is a link</a>
+      <a href="#" @click="remove(note.id)">Delete Note</a>
     </div>
   </div>
 </template>
 
 <script>
 import Router from "vue-router";
+import { mapActions } from "vuex";
 
 export default {
   name: "NoteCard",
@@ -20,7 +20,11 @@ export default {
   methods: {
     viewNote() {
       this.$router.push("about");
-    }
+    },
+    remove(ID) {
+      this.removenote(ID);
+    },
+    ...mapActions(["removenote"])
   }
 };
 </script>
