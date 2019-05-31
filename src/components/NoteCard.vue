@@ -19,7 +19,7 @@ export default {
   props: ["note"],
   methods: {
     viewNote() {
-      this.$router.push("about");
+      this.$router.push("noteview");
     },
     remove(ID) {
       this.removenote(ID);

@@ -10,6 +10,14 @@ export default new Vuex.Store({
   getters: {
     getAllNotes: function (state) {
       return state.notes;
+    },
+    getNotes: function (id) {
+      for (let index = 0; index < store.notes.length; index++) {
+        const element = store.notes[index];
+        if(id == element.id){
+          return element;
+        }
+      }
     }
   },
   mutations: {
