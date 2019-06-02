@@ -11,11 +11,14 @@ export default new Vuex.Store({
     getAllNotes: function (state) {
       return state.notes;
     },
-    getNotes: function (id) {
-      for (let index = 0; index < store.notes.length; index++) {
-        const element = store.notes[index];
-        if(id == element.id){
-          return element;
+    getNote: function (state, id) {
+      var self = this;
+      return function (params) {
+        for (let index = 0; index < state.notes.length; index++) {
+          const element = state.notes[index];
+          if (id == element.id) {
+            return element;
+          }
         }
       }
     }

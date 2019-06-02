@@ -10,14 +10,15 @@ export default new Router({
       component: () => import('./views/Home.vue')
     },
     {
-      path: '/about',
-      name: 'about',
-      component: () => import('./views/About.vue')
+      path: '/new',
+      name: 'new',
+      component: () => import('./views/NewNote.vue')
     },
     {
       path: '/noteview/:id',
       name: 'noteview',
-      component: () => import('./views/ReadNote.vue')
+      component: () => import('./views/ReadNote.vue'),
+      props: true,
     }
   ]
 })

@@ -1,7 +1,7 @@
 <template>
   <div class="home container">
     <Notes/>
-    <FloatingButton/>
+    <FloatingButton :iconname="'add'" :action="buttonaction"/>
   </div>
 </template>
 
@@ -16,6 +16,11 @@ export default {
     Notes,
     NoteCard,
     FloatingButton
+  },
+  methods: {
+    buttonaction() {
+      this.$router.push("new");
+    }
   }
 };
 </script>

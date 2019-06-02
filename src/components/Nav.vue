@@ -11,7 +11,7 @@
             <router-link to="/">Home</router-link>
           </li>
           <li>
-            <router-link to="/about">Nueva</router-link>
+            <router-link to="/new">Nueva</router-link>
           </li>
         </ul>
       </div>
@@ -21,7 +21,7 @@
         <router-link to="/">Home</router-link>
       </li>
       <li>
-        <router-link to="/about">Nueva</router-link>
+        <router-link to="/new">Nueva</router-link>
       </li>
     </ul>
   </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="fixed-action-btn">
-    <a class="btn-floating btn-large red" @click="buttonaction">
-      <Icon name="add"/>
+    <a class="btn-floating btn-large red" @click="action">
+      <Icon :name="iconname"/>
     </a>
   </div>
 </template>
@@ -10,11 +10,7 @@
 import Icon from "@/components/Icon.vue";
 export default {
   name: "FloatingButton",
-  methods: {
-    buttonaction() {
-      this.$router.push("about");
-    }
-  },
+  props: ["iconname", "action"],
   components: {
     Icon
   }
