@@ -40,7 +40,17 @@ export default new Vuex.Store({
         }
       }
       localStorage.setItem('vuenotes', JSON.stringify(state.notes));
-    }
+    },
+    UPDATE_NOTE(state, note) {
+      for (let index = 0; index < state.notes.length; index++) {
+        const element = state.notes[index];
+        if (element.id == note.id) {
+          state.notes[index] = note;
+        }
+      }
+      localStorage.setItem('vuenotes', JSON.stringify(state.notes));
+    },
+
   },
   actions: {
     getLocalNotes({
@@ -60,6 +70,12 @@ export default new Vuex.Store({
       state
     }, ID) {
       commit('REMOVE_NOTE', ID);
-    }
+    },
+    updateNote({
+      commit,
+      state
+    }, note) {
+      commit('UPDATE_NOTE', note);
+    },
   }
 })

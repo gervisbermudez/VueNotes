@@ -15,9 +15,15 @@ export default new Router({
       component: () => import('./views/NewNote.vue')
     },
     {
-      path: '/noteview/:id',
-      name: 'noteview',
+      path: '/view/:id',
+      name: 'view',
       component: () => import('./views/ReadNote.vue'),
+      props: true,
+    },
+    {
+      path: '/edit/:id',
+      name: 'edit',
+      component: () => import('./views/Edit.vue'),
       props: true,
     }
   ]

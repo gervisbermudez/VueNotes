@@ -1,8 +1,7 @@
 <template>
   <div class="container">
-    <h2>{{read.title}}</h2>
-    <p>{{read.text}}</p>
-    <FloatingButton :iconname="'edit'" :action="buttonaction"/>
+    <h1>Edit Note</h1>
+    <NoteForm :editnote="note"/>
   </div>
 </template>
 
@@ -10,25 +9,16 @@
 import Router from "vue-router";
 import { store } from "@/store.js";
 import { mapState, mapGetters } from "vuex";
-import FloatingButton from "@/components/FloatingButton.vue";
+import NoteForm from "@/components/NoteForm";
 
 export default {
-  name: "ReadNote",
+  components: {
+    NoteForm
+  },
   data() {
     return {
-      read: {
-        title: "",
-        text: ""
-      }
+      note: {}
     };
-  },
-  components: {
-    FloatingButton
-  },
-  methods: {
-    buttonaction: function() {
-      this.$router.push("/edit/" + this.read.id);
-    }
   },
   props: {
     id: {
@@ -40,7 +30,11 @@ export default {
     const readnote = this.$store.state.notes.find(note => {
       return note.id == this.id;
     });
-    this.read = readnote;
+    this.note = readnote;
+  },
+  mounted() {
+    M.updateTextFields();
+    M.textareaAutoResize(document.getElementById("textarea1"));
   }
 };
 </script>

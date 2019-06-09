@@ -24,7 +24,7 @@ export default {
   props: ["note"],
   methods: {
     viewNote() {
-      this.$router.push("noteview/" + this.note.id);
+      this.$router.push("view/" + this.note.id);
     },
     remove(ID) {
       this.removenote(ID);

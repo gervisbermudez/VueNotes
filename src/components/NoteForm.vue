@@ -9,39 +9,18 @@
       <textarea id="textarea1" v-model="note.text" class="materialize-textarea"></textarea>
       <label for="textarea1">Nota</label>
     </div>
-    <p>
+    <div class="col s12" :class="selectedColor" v-for="(color, index) in colors" :key="index">
       <label>
-        <input name="group1" v-model="note.color" type="radio" checked value="light-blue lighten-2">
-        <span>Blue</span>
+        <input name="group1" v-model="note.color" type="radio" checked :value="color">
+        <span>{{color | capitalize}}</span>
       </label>
-    </p>
-    <p>
-      <label>
-        <input name="group1" v-model="note.color" type="radio" value="light-green">
-        <span>Green</span>
-      </label>
-    </p>
-    <p>
-      <label>
-        <input
-          class="with-gap"
-          name="group1"
-          v-model="note.color"
-          type="radio"
-          value="yellow lighten-2"
-        >
-        <span>Yellow</span>
-      </label>
-    </p>
-    <p>
-      <label>
-        <input name="group1" v-model="note.color" type="radio" value="orange lighten-1">
-        <span>Orange</span>
-      </label>
-    </p>
-    <a @click="save" class="waves-effect waves-light btn-small">
-      <Icon name="save" class="material-icons left"/>Guardar
-    </a>
+    </div>
+    <div class="col s12">
+      <br>
+      <a @click="save" class="waves-effect waves-light btn-small">
+        <Icon name="save" class="material-icons left"/>Guardar
+      </a>
+    </div>
   </div>
 </template>
 
@@ -62,9 +41,12 @@ export default {
         text: null,
         color: "",
         id: null
-      }
+      },
+      editmode: false,
+      colors: ["light-blue", "light-green", "red", "orange", "yellow"]
     };
   },
+  props: ["editnote"],
   computed: {
     validNote() {
       let flag = false;
@@ -78,20 +60,61 @@ export default {
             Math.floor(Math.random() * charactersLength)
           );
         }
-        this.note.id = result;
+        this.editmode ? "" : (this.note.id = result);
         flag = true;
       }
       return flag;
+    },
+    selectedColor: function() {
+      return `note` + this.note.color;
+    }
+  },
+  filters: {
+    capitalize: function(value) {
+      if (!value) return "";
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
     }
   },
   methods: {
     save() {
       if (this.validNote) {
-        this.addNote(this.note);
+        if (this.editmode) {
+          this.updateNote(this.note);
+        } else {
+          this.addNote(this.note);
+        }
+        console.log(this.note);
         this.$router.push("/");
       }
     },
-    ...mapActions(["addNote"])
+    ...mapActions(["addNote", "updateNote"])
+  },
+  created() {},
+  mounted() {
+    if (this.editnote) {
+      this.note = this.editnote;
+      this.editmode = true;
+    }
   }
 };
 </script>
+
+<style lang="scss" scoped>
+$colors: (
+  light-green: #00a87b,
+  yellow: #ffeb3b,
+  red: #f44336,
+  orange: #ff9800,
+  light-blue: #436fb6,
+  white: #ffffff,
+  black: #000000
+);
+
+@each $name, $color in $colors {
+  .note#{$name} [type="radio"]:checked + span:after {
+    background-color: $color !important;
+    border-color: $color !important;
+  }
+}
+</style>
