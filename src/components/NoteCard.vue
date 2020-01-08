@@ -34,5 +34,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+  .card{
+    border-radius: 15px;
+    .card-action {
+      border-radius: 15px;
+    }
+  }
 </style>

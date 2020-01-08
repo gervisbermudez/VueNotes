@@ -1,8 +1,7 @@
 <template>
   <div>
-    <nav class="white">
+    <nav>
       <div class="nav-wrapper">
-        <router-link to="/" class="brand-logo">Vue Notes <Icon name="assignment"/> </router-link>
         <a href="#" data-target="slide-out" class="sidenav-trigger">
           <i class="material-icons">menu</i>
         </a>
@@ -28,12 +27,8 @@
 </template>
 
 <script>
-import Icon from '@/components/Icon.vue'
 export default {
   name: 'Nav',
-  components: {
-    Icon
-  }
 }
 </script>
 
@@ -41,6 +36,7 @@ export default {
 @import "../assets/scss/vars.scss";
 nav {
   box-shadow: none;
+  background: none;
   .sidenav-trigger{
     color: $primary;
   }

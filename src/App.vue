@@ -26,3 +26,10 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+@import "./assets/scss/vars.scss";
+body{
+  background: $on-primary;
+}
+</style>
