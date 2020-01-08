@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="blue darken-1">
+    <nav class="white">
       <div class="nav-wrapper">
         <router-link to="/" class="brand-logo">Vue Notes <Icon name="assignment"/> </router-link>
         <a href="#" data-target="slide-out" class="sidenav-trigger">
@@ -36,3 +36,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import "../assets/scss/vars.scss";
+nav {
+  box-shadow: none;
+  .sidenav-trigger{
+    color: $primary;
+  }
+}
+</style>
