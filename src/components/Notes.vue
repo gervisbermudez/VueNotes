@@ -2,7 +2,7 @@
   <div class="app-container">
     <div class="tags">
       <div class="tag-colections">
-        <div class="chip" v-for="(tag, index) in getAllTags" v-bind:key="index">{{tag}}</div>
+        <div class="chip" v-bind:class="{ active: (index == 3) }" v-for="(tag, index) in getAllTags" v-bind:key="index">{{tag}}</div>
       </div>
     </div>
     <div class="carrousel-container">
@@ -116,9 +116,13 @@ export default {
   }
 }
 .chip {
-  background: $primary;
-  color: $white;
+  color: $primary;
+  background: $on-primary;
   font-weight: 400;
+  &.active{
+    background: $primary;
+    color: $on-primary;
+  }
 }
 .hooper-slide {
   margin-top: 20px;
