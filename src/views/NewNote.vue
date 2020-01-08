@@ -6,11 +6,11 @@
 </template>
 
 <script>
-import NoteForm from "@/components/NoteForm";
+import NoteForm from '@/components/NoteForm'
 
 export default {
   components: {
     NoteForm
   }
-};
+}
 </script>

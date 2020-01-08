@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "Icon",
-  props: ["name"]
-};
+  name: 'Icon',
+  props: ['name']
+}
 </script>

@@ -6,21 +6,21 @@
 </template>
 
 <script>
-import Notes from "@/components/Notes.vue";
-import NoteCard from "@/components/NoteCard.vue";
-import FloatingButton from "@/components/FloatingButton.vue";
+import Notes from '@/components/Notes.vue'
+import NoteCard from '@/components/NoteCard.vue'
+import FloatingButton from '@/components/FloatingButton.vue'
 
 export default {
-  name: "home",
+  name: 'home',
   components: {
     Notes,
     NoteCard,
     FloatingButton
   },
   methods: {
-    buttonaction() {
-      this.$router.push("new");
+    buttonaction () {
+      this.$router.push('new')
     }
   }
-};
+}
 </script>

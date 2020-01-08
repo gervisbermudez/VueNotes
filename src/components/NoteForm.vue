@@ -25,79 +25,79 @@
 </template>
 
 <script>
-import Icon from "@/components/Icon.vue";
-import { mapActions } from "vuex";
-import Router from "vue-router";
+import Icon from '@/components/Icon.vue'
+import { mapActions } from 'vuex'
+import Router from 'vue-router'
 
 export default {
-  name: "NoteForm",
+  name: 'NoteForm',
   components: {
     Icon
   },
-  data() {
+  data () {
     return {
       note: {
         title: null,
         text: null,
-        color: "",
+        color: '',
         id: null
       },
       editmode: false,
-      colors: ["light-blue", "light-green", "red", "orange", "yellow"]
-    };
+      colors: ['light-blue', 'light-green', 'red', 'orange', 'yellow']
+    }
   },
-  props: ["editnote"],
+  props: ['editnote'],
   computed: {
-    validNote() {
-      let flag = false;
+    validNote () {
+      let flag = false
       if (!!this.note.title || !!this.note.text) {
-        var result = "";
+        var result = ''
         var characters =
-          "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-        var charactersLength = characters.length;
+          'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+        var charactersLength = characters.length
         for (var i = 0; i < 10; i++) {
           result += characters.charAt(
             Math.floor(Math.random() * charactersLength)
-          );
+          )
         }
-        this.editmode ? "" : (this.note.id = result);
-        flag = true;
+        this.editmode ? '' : (this.note.id = result)
+        flag = true
       }
-      return flag;
+      return flag
     },
-    selectedColor: function() {
-      return `note` + this.note.color;
+    selectedColor: function () {
+      return `note` + this.note.color
     }
   },
   filters: {
-    capitalize: function(value) {
-      if (!value) return "";
-      value = value.toString();
-      return value.charAt(0).toUpperCase() + value.slice(1);
+    capitalize: function (value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
     }
   },
   methods: {
-    save() {
+    save () {
       if (this.validNote) {
         if (this.editmode) {
-          this.updateNote(this.note);
+          this.updateNote(this.note)
         } else {
-          this.addNote(this.note);
+          this.addNote(this.note)
         }
-        console.log(this.note);
-        this.$router.push("/");
+        console.log(this.note)
+        this.$router.push('/')
       }
     },
-    ...mapActions(["addNote", "updateNote"])
+    ...mapActions(['addNote', 'updateNote'])
   },
-  created() {},
-  mounted() {
+  created () {},
+  mounted () {
     if (this.editnote) {
-      this.note = this.editnote;
-      this.editmode = true;
+      this.note = this.editnote
+      this.editmode = true
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -5,7 +5,7 @@ import store from './store'
 import './registerServiceWorker'
 import 'materialize-css/dist/css/materialize.css'
 import 'materialize-css'
-import 'jquery';
+import 'jquery'
 
 Vue.config.productionTip = false
 

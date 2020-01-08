@@ -11,27 +11,27 @@
 </template>
 
 <script>
-import Router from "vue-router";
-import { mapActions } from "vuex";
+import Router from 'vue-router'
+import { mapActions } from 'vuex'
 
 export default {
-  name: "NoteCard",
+  name: 'NoteCard',
   computed: {
-    textColor: function() {
-      return this.note.color ? "white-text" : "";
+    textColor: function () {
+      return this.note.color ? 'white-text' : ''
     }
   },
-  props: ["note"],
+  props: ['note'],
   methods: {
-    viewNote() {
-      this.$router.push("view/" + this.note.id);
+    viewNote () {
+      this.$router.push('view/' + this.note.id)
     },
-    remove(ID) {
-      this.removenote(ID);
+    remove (ID) {
+      this.removenote(ID)
     },
-    ...mapActions(["removenote"])
+    ...mapActions(['removenote'])
   }
-};
+}
 </script>
 
 <style>

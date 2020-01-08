@@ -7,12 +7,12 @@
 </template>
 
 <script>
-import Icon from "@/components/Icon.vue";
+import Icon from '@/components/Icon.vue'
 export default {
-  name: "FloatingButton",
-  props: ["iconname", "action"],
+  name: 'FloatingButton',
+  props: ['iconname', 'action'],
   components: {
     Icon
   }
-};
+}
 </script>

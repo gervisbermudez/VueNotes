@@ -7,27 +7,27 @@
 </template>
 
 <script>
-import Router from "vue-router";
-import { store } from "@/store.js";
-import { mapState, mapGetters } from "vuex";
-import FloatingButton from "@/components/FloatingButton.vue";
+import Router from 'vue-router'
+import { store } from '@/store.js'
+import { mapState, mapGetters } from 'vuex'
+import FloatingButton from '@/components/FloatingButton.vue'
 
 export default {
-  name: "ReadNote",
-  data() {
+  name: 'ReadNote',
+  data () {
     return {
       read: {
-        title: "",
-        text: ""
+        title: '',
+        text: ''
       }
-    };
+    }
   },
   components: {
     FloatingButton
   },
   methods: {
-    buttonaction: function() {
-      this.$router.push("/edit/" + this.read.id);
+    buttonaction: function () {
+      this.$router.push('/edit/' + this.read.id)
     }
   },
   props: {
@@ -36,11 +36,11 @@ export default {
     }
     // rest of the props if needed
   },
-  created() {
+  created () {
     const readnote = this.$store.state.notes.find(note => {
-      return note.id == this.id;
-    });
-    this.read = readnote;
+      return note.id == this.id
+    })
+    this.read = readnote
   }
-};
+}
 </script>

@@ -6,23 +6,23 @@
 </template>
 
 <script>
-import Nav from "./components/Nav.vue";
-import Notes from "./components/Notes.vue";
-import $ from "jquery";
-import { mapActions } from "vuex";
+import Nav from './components/Nav.vue'
+import Notes from './components/Notes.vue'
+import $ from 'jquery'
+import { mapActions } from 'vuex'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     Nav
   },
   methods: {
-    getnotes() {},
-    ...mapActions["getLocalNotes"]
+    getnotes () {},
+    ...mapActions['getLocalNotes']
   },
-  mounted: function() {
-    M.AutoInit();
-    this.$store.dispatch("getLocalNotes");
+  mounted: function () {
+    M.AutoInit()
+    this.$store.dispatch('getLocalNotes')
   }
-};
+}
 </script>

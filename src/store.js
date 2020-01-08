@@ -9,73 +9,73 @@ export default new Vuex.Store({
   },
   getters: {
     getAllNotes: function (state) {
-      return state.notes;
+      return state.notes
     },
     getNote: function (state, id) {
-      var self = this;
+      var self = this
       return function (params) {
         for (let index = 0; index < state.notes.length; index++) {
-          const element = state.notes[index];
+          const element = state.notes[index]
           if (id == element.id) {
-            return element;
+            return element
           }
         }
       }
     }
   },
   mutations: {
-    ADD_NOTE(state, note) {
-      state.notes.push(note);
-      localStorage.setItem('vuenotes', JSON.stringify(state.notes));
+    ADD_NOTE (state, note) {
+      state.notes.push(note)
+      localStorage.setItem('vuenotes', JSON.stringify(state.notes))
     },
-    SET_NOTES(state, notes) {
-      state.notes = notes;
-      localStorage.setItem('vuenotes', JSON.stringify(state.notes));
+    SET_NOTES (state, notes) {
+      state.notes = notes
+      localStorage.setItem('vuenotes', JSON.stringify(state.notes))
     },
-    REMOVE_NOTE(state, ID) {
+    REMOVE_NOTE (state, ID) {
       for (let index = 0; index < state.notes.length; index++) {
-        const element = state.notes[index];
+        const element = state.notes[index]
         if (element.id == ID) {
-          state.notes.splice(index, 1);
+          state.notes.splice(index, 1)
         }
       }
-      localStorage.setItem('vuenotes', JSON.stringify(state.notes));
+      localStorage.setItem('vuenotes', JSON.stringify(state.notes))
     },
-    UPDATE_NOTE(state, note) {
+    UPDATE_NOTE (state, note) {
       for (let index = 0; index < state.notes.length; index++) {
-        const element = state.notes[index];
+        const element = state.notes[index]
         if (element.id == note.id) {
-          state.notes[index] = note;
+          state.notes[index] = note
         }
       }
-      localStorage.setItem('vuenotes', JSON.stringify(state.notes));
-    },
+      localStorage.setItem('vuenotes', JSON.stringify(state.notes))
+    }
 
   },
   actions: {
-    getLocalNotes({
+    getLocalNotes ({
       commit
     }) {
-      var notes = JSON.parse(localStorage.getItem('vuenotes') || '[]');
-      commit('SET_NOTES', notes);
+      var notes = JSON.parse(localStorage.getItem('vuenotes') || '[]')
+      commit('SET_NOTES', notes)
     },
-    addNote({
+    addNote ({
       commit,
       state
     }, note) {
-      commit('ADD_NOTE', note);
+      commit('ADD_NOTE', note)
     },
-    removenote({
+    removenote ({
       commit,
       state
     }, ID) {
-      commit('REMOVE_NOTE', ID);
+      commit('REMOVE_NOTE', ID)
     },
-    updateNote({
+    updateNote ({
       commit,
       state
     }, note) {
-      commit('UPDATE_NOTE', note);
-    },
+      commit('UPDATE_NOTE', note)
+    }
   }
 })

@@ -10,18 +10,18 @@
 </template>
 
 <script>
-import NoteCard from "@/components/NoteCard.vue";
-import { store } from "@/store.js";
-import { mapState, mapGetters } from "vuex";
+import NoteCard from '@/components/NoteCard.vue'
+import { store } from '@/store.js'
+import { mapState, mapGetters } from 'vuex'
 
 export default {
-  name: "Notes",
+  name: 'Notes',
   components: {
     NoteCard
   },
   methods: {},
   computed: {
-    ...mapGetters(["getAllNotes"])
+    ...mapGetters(['getAllNotes'])
   }
-};
+}
 </script>

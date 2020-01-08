@@ -6,19 +6,19 @@
 </template>
 
 <script>
-import Router from "vue-router";
-import { store } from "@/store.js";
-import { mapState, mapGetters } from "vuex";
-import NoteForm from "@/components/NoteForm";
+import Router from 'vue-router'
+import { store } from '@/store.js'
+import { mapState, mapGetters } from 'vuex'
+import NoteForm from '@/components/NoteForm'
 
 export default {
   components: {
     NoteForm
   },
-  data() {
+  data () {
     return {
       note: {}
-    };
+    }
   },
   props: {
     id: {
@@ -26,15 +26,15 @@ export default {
     }
     // rest of the props if needed
   },
-  created() {
+  created () {
     const readnote = this.$store.state.notes.find(note => {
-      return note.id == this.id;
-    });
-    this.note = readnote;
+      return note.id == this.id
+    })
+    this.note = readnote
   },
-  mounted() {
-    M.updateTextFields();
-    M.textareaAutoResize(document.getElementById("textarea1"));
+  mounted () {
+    M.updateTextFields()
+    M.textareaAutoResize(document.getElementById('textarea1'))
   }
-};
+}
 </script>

@@ -28,11 +28,11 @@
 </template>
 
 <script>
-import Icon from "@/components/Icon.vue";
+import Icon from '@/components/Icon.vue'
 export default {
-  name: "Nav",
+  name: 'Nav',
   components: {
-    Icon,
-  },
-};
+    Icon
+  }
+}
 </script>
