@@ -2,7 +2,12 @@
   <div class="app-container">
     <div class="tags">
       <div class="tag-colections">
-        <div class="chip" v-bind:class="{ active: (index == 3) }" v-for="(tag, index) in getAllTags" v-bind:key="index">{{tag}}</div>
+        <div
+          class="chip"
+          v-bind:class="{ active: (index == 3) }"
+          v-for="(tag, index) in getAllTags"
+          v-bind:key="index"
+        >{{tag}}</div>
       </div>
     </div>
     <div class="carrousel-container">
@@ -76,21 +81,27 @@
       </hooper>
     </div>
     <div class="hello">
-      <div class="row">
-        <div class="col m6" v-for="note in getAllNotes" v-bind:key="note.id">
+      <masonry
+        :cols="{default: 4, 1000: 3, 700: 2, 400: 1}"
+        :gutter="{default: '30px', 700: '15px'}"
+      >
+        <div v-for="note in getAllNotes" v-bind:key="note.id">
           <NoteCard v-bind:note="note" />
         </div>
-      </div>
+      </masonry>
     </div>
   </div>
 </template>
 
 <script>
+import Vue from "vue";
 import NoteCard from "@/components/NoteCard.vue";
 import { store } from "@/store.js";
 import { mapState, mapGetters } from "vuex";
 import { Hooper, Slide } from "hooper";
 import "hooper/dist/hooper.css";
+import VueMasonry from "vue-masonry-css";
+Vue.use(VueMasonry);
 
 export default {
   name: "Notes",
@@ -119,9 +130,17 @@ export default {
   color: $primary;
   background: $on-primary;
   font-weight: 400;
-  &.active{
+  &.active {
     background: $primary;
     color: $on-primary;
+  }
+}
+.hooper{
+  @media all and (max-width: 768px) {
+    height: 220px;
+  }
+  @media all and (max-width: 400px) {
+    height: 230px;
   }
 }
 .hooper-slide {
@@ -131,8 +150,8 @@ export default {
     margin: 10px;
     border-radius: 15px;
     color: $primary;
-    .card-title{
-      font-weight: 400
+    .card-title {
+      font-weight: 400;
     }
   }
 }
