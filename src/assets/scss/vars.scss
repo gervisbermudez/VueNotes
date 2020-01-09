@@ -1,16 +1,12 @@
-$primary: #224043;
-$secundary: #68a7af;
-
-$acent: #ad5a4a;
+$error: #ad5a4a;
 $light: #accce1;
 $dark: #5f6661;
 
-$on-primary: #f8f9f9;
-$secundary-variant: #91b7cb;
-$background: #b5cfa4;
-
 $white: #fff;
+$on-primary: #f8f9f9;
 
-@mixin gardient_card() {
-  background-image: linear-gradient(to top, #37ecba 0%, #72afd3 100%);
-}
+$primary: #3496A6;
+$secundary: #7BB6BE;
+$secundary-variant: #94D4DA;
+$acent: #94E3E3;
+$background: #EFF7F8;
