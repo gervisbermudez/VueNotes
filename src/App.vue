@@ -7,29 +7,32 @@
       >
     <router-view />
     </transition>
+    <TagsComponent />
   </div>
 </template>
 
 <script>
-import Nav from "./components/Nav.vue";
-import Notes from "./components/Notes.vue";
-import $ from "jquery";
-import { mapActions } from "vuex";
+import Nav from './components/Nav.vue'
+import TagsComponent from './components/TagsComponent'
+import { mapActions } from 'vuex'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    Nav
+    Nav,
+    TagsComponent
   },
   methods: {
-    getnotes() {},
-    ...mapActions["getLocalNotes"]
+    getnotes () {},
+    ...mapActions['getLocalNotes']
   },
-  mounted: function() {
-    M.AutoInit();
-    this.$store.dispatch("getLocalNotes");
+  mounted: function () {
+    window.M.AutoInit()
+    // let elems = document.querySelectorAll('.fixed-action-btn')
+    // window.M.FloatingActionButton.init(elems)
+    this.$store.dispatch('getLocalNotes')
   }
-};
+}
 </script>
 
 <style lang="scss">

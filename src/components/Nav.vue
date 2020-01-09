@@ -15,20 +15,34 @@
         </ul>
       </div>
     </nav>
-    <ul id="slide-out" class="sidenav">
-      <li>
-        <router-link to="/"><i class="material-icons">home</i> Inicio</router-link>
-      </li>
-      <li>
-        <router-link to="/new"><i class="material-icons">add</i> Nueva</router-link>
-      </li>
-    </ul>
+    <div class="sidenav" id="slide-out">
+      <div class="logo">
+        <img src="../assets/img/logo.png" alt />
+      </div>
+      <ul>
+        <li>
+          <router-link to="/">
+            <i class="material-icons">home</i> Inicio
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/new">
+            <i class="material-icons">add</i> Nueva
+          </router-link>
+        </li>
+        <li>
+          <a class="modal-trigger" href="#modal1">
+            <i class="material-icons">label</i> Agregar tag
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Nav',
+  name: 'Nav'
 }
 </script>
 
@@ -37,8 +51,15 @@ export default {
 nav {
   box-shadow: none;
   background: none;
-  .sidenav-trigger{
+  .sidenav-trigger {
     color: $primary;
+    display: block;
   }
+}
+.logo img {
+  max-width: 100%;
+  height: 120px;
+  margin: 0 auto;
+  display: block;
 }
 </style>

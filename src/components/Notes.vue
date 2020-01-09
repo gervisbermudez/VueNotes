@@ -6,8 +6,8 @@
           class="chip"
           v-bind:class="{ active: (index == 3) }"
           v-for="(tag, index) in getAllTags"
-          v-bind:key="index"
-        >{{tag}}</div>
+          v-bind:key="tag.id"
+        >{{tag.title}}</div>
       </div>
     </div>
     <div class="carrousel-container">
@@ -94,27 +94,26 @@
 </template>
 
 <script>
-import Vue from "vue";
-import NoteCard from "@/components/NoteCard.vue";
-import { store } from "@/store.js";
-import { mapState, mapGetters } from "vuex";
-import { Hooper, Slide } from "hooper";
-import "hooper/dist/hooper.css";
-import VueMasonry from "vue-masonry-css";
-Vue.use(VueMasonry);
+import Vue from 'vue'
+import NoteCard from '@/components/NoteCard.vue'
+import { mapGetters } from 'vuex'
+import { Hooper, Slide } from 'hooper'
+import 'hooper/dist/hooper.css'
+import VueMasonry from 'vue-masonry-css'
+Vue.use(VueMasonry)
 
 export default {
-  name: "Notes",
+  name: 'Notes',
   components: {
     NoteCard,
     Hooper,
     Slide
   },
   computed: {
-    ...mapGetters(["getAllNotes"]),
-    ...mapGetters(["getAllTags"])
+    ...mapGetters(['getAllNotes']),
+    ...mapGetters(['getAllTags'])
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -7,13 +7,26 @@ export default new Vuex.Store({
   state: {
     notes: [],
     tags: [
-      'Jane Doe',
-      'App',
-      'Desing',
-      'Development',
-      'dolor',
-      'Lorem ipsum',
-      'ipsum'
+      {
+        title: 'Development',
+        date: 'Development',
+        id: 'Development'
+      },
+      {
+        title: 'Development',
+        date: 'Development',
+        id: 'Development'
+      },
+      {
+        title: 'Development',
+        date: 'Development',
+        id: 'Development'
+      },
+      {
+        title: 'Development',
+        date: 'Development',
+        id: 'Development'
+      }
     ]
   },
   getters: {
@@ -64,6 +77,7 @@ export default new Vuex.Store({
     },
     // Tags Mutations
     ADD_TAG (state, tag) {
+      console.log(tag)
       state.tags.push(tag)
       localStorage.setItem('vuenotes-tags', JSON.stringify(state.tags))
     },
@@ -96,13 +110,21 @@ export default new Vuex.Store({
       commit
     }) {
       var notes = JSON.parse(localStorage.getItem('vuenotes') || '[]')
+      var tags = JSON.parse(localStorage.getItem('vuenotes-tags') || '[]')
       commit('SET_NOTES', notes)
+      commit('SET_TAG', tags)
     },
     addNote ({
       commit,
       state
     }, note) {
       commit('ADD_NOTE', note)
+    },
+    addTag ({
+      commit,
+      state
+    }, tag) {
+      commit('ADD_TAG', tag)
     },
     removenote ({
       commit,
