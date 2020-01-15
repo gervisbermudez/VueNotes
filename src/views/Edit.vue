@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <h1>Edit Note</h1>
     <NoteForm :editnote="note"/>
   </div>
 </template>
