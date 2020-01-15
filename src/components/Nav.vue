@@ -51,6 +51,8 @@ export default {
 nav {
   box-shadow: none;
   background: none;
+  position: fixed;
+  top: 0px;
   .sidenav-trigger {
     color: $primary;
     display: block;

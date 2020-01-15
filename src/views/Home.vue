@@ -1,5 +1,5 @@
 <template>
-  <div class="home container">
+  <div class="home">
     <Notes/>
     <FloatingButton :iconname="'add'" :action="buttonaction"/>
   </div>

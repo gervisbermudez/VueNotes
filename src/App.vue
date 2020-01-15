@@ -1,13 +1,15 @@
 <template>
   <div id="app">
     <Nav />
-    <transition
-        name="fade"
-        mode="out-in"
-      >
-    <router-view />
-    </transition>
-    <TagsComponent />
+    <div class="wrap">
+      <transition
+          name="fade"
+          mode="out-in"
+        >
+      <router-view />
+      </transition>
+      <TagsComponent />
+    </div>
   </div>
 </template>
 
@@ -50,5 +52,8 @@ body{
 .fade-enter,
 .fade-leave-active {
   opacity: 0
+}
+.wrap{
+  margin-top: 50px;
 }
 </style>

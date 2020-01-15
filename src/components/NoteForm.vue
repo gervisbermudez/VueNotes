@@ -6,12 +6,12 @@
     <div class="col s12 note">
       <textarea id="textarea1" v-on:keyup="save" placeholder="Nota" v-model="note.text" class="materialize-textarea"></textarea>
     </div>
-    <!-- <div class="col s12" :class="selectedColor" v-for="(color, index) in colors" :key="index">
+    <div class="col s12" :class="selectedColor" v-for="(color, index) in colors" :key="index">
       <label>
         <input name="group1" v-model="note.color" type="radio" checked :value="color">
         <span>{{color | capitalize}}</span>
       </label>
-    </div> -->
+    </div>
     <!-- <div class="col s12">
       <br>
       <a @click="save" class="waves-effect waves-light btn-small">
