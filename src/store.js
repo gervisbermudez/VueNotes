@@ -6,15 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     notes: [],
-    tags: [
-      'Jane Doe',
-      'App',
-      'Desing',
-      'Development',
-      'dolor',
-      'Lorem ipsum',
-      'ipsum'
-    ]
+    tags: []
   },
   getters: {
     getAllNotes: function (state) {
