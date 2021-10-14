@@ -1,51 +1,26 @@
 <template>
-  <div id="app">
-    <Nav />
-    <transition
-        name="fade"
-        mode="out-in"
-      >
-    <router-view />
-    </transition>
-  </div>
+  <img alt="Vue logo" src="./assets/logo.png">
+  <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
-import Nav from "./components/Nav.vue";
-import Notes from "./components/Notes.vue";
-import $ from "jquery";
-import { mapActions } from "vuex";
+import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
-    Nav
-  },
-  methods: {
-    getnotes() {},
-    ...mapActions["getLocalNotes"]
-  },
-  mounted: function() {
-    M.AutoInit();
-    this.$store.dispatch("getLocalNotes");
+    HelloWorld
   }
-};
+}
 </script>
 
-<style lang="scss">
-@import "./assets/scss/vars.scss";
-body{
-  background: $on-primary;
-}
-.fade-enter-active,
-.fade-leave-active {
-  transition-duration: 0.3s;
-  transition-property: opacity;
-  transition-timing-function: ease;
-}
-
-.fade-enter,
-.fade-leave-active {
-  opacity: 0
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
