@@ -1,59 +1,26 @@
 <template>
-  <div id="app">
-    <Nav />
-    <div class="wrap">
-      <transition
-          name="fade"
-          mode="out-in"
-        >
-      <router-view />
-      </transition>
-      <TagsComponent />
-    </div>
-  </div>
+  <img alt="Vue logo" src="./assets/logo.png">
+  <HelloWorld msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
-import Nav from './components/Nav.vue'
-import TagsComponent from './components/TagsComponent'
-import { mapActions } from 'vuex'
+import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
   components: {
-    Nav,
-    TagsComponent
-  },
-  methods: {
-    getnotes () {},
-    ...mapActions['getLocalNotes']
-  },
-  mounted: function () {
-    window.M.AutoInit()
-    // let elems = document.querySelectorAll('.fixed-action-btn')
-    // window.M.FloatingActionButton.init(elems)
-    this.$store.dispatch('getLocalNotes')
+    HelloWorld
   }
 }
 </script>
 
-<style lang="scss">
-@import "./assets/scss/vars.scss";
-body{
-  background: $on-primary;
-}
-.fade-enter-active,
-.fade-leave-active {
-  transition-duration: 0.3s;
-  transition-property: opacity;
-  transition-timing-function: ease;
-}
-
-.fade-enter,
-.fade-leave-active {
-  opacity: 0
-}
-.wrap{
-  margin-top: 50px;
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 </style>
