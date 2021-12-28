@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;800&family=Poppins:ital,wght@0,100;0,300;0,500;0,600;0,800;1,400&display=swap");
+
+:root {
+    --uclablue: #54728c;
+    --white: #fff;
+    --bone: #f8f8f8;
+    --gray: #868686;
+    --bluedark: #2f2e41;
+    --danger: #D40000;
+    --warning: #F2BD00;
+    --success: #2FB600;
+    --info: var(--uclablue);
+}
+
+html {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.primary {
+    background-color: var(--uclablue) !important;
+    color: var(--white);
+}
+
+.info {
+    background-color: var(--gray) !important;
+    color: var(--white);
+}
+
+.danger{
+    background-color: var(--danger);
+}
+
+.warning{
+    background-color: var(--warning);
+}
+
+.success{
+    background-color: var(--success);
+}
+
+.input-form {
+    margin: 1rem 0;
+}
+
+input[type="text"],
+input[type="password"] {
+    height: 34px;
+    display: block;
+    width: auto;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0px 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--gray);
+    background-color: var(--bone);
+    background-clip: padding-box;
+    border: 1px solid var(--gray);
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input[type="text"]:focus-visible,
+input[type="password"]:focus-visible {
+    border: 1px solid var(--bluedark);
+    outline: none;
+}
+
+
+label {
+    display: inline-block;
+    padding: 0.5rem 0;
+}
+
+.btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+a {
+    color: var(--uclablue);
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
