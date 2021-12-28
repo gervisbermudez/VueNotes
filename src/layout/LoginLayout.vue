@@ -176,13 +176,20 @@ export default {
 .cover-img {
   z-index: 2;
   position: relative;
-  margin-top: -3rem;
+  width: 90%;
+}
+
+.cover-img img {
+  max-width: 100%;
+  margin: auto;
+  display: block;
 }
 
 .cover-text {
   font-family: "Nunito", sans-serif;
   text-align: center;
   margin: 2rem;
+  z-index: 2;
 }
 
 .title {
@@ -222,5 +229,80 @@ export default {
 .form-action {
   display: flex;
   justify-content: center;
+}
+
+.copyright-zone {
+  font-size: 0.7rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    grid-template-columns: 1.2fr 1fr;
+  }
+
+  .cover-img {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .cover-img {
+    width: 60%;
+  }
+
+  .login-form {
+    padding: 0 2rem;
+    width: 100%;
+  }
+
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .form-action {
+    width: 100%;
+  }
+
+  .form-action .input-form {
+    width: auto;
+    width: 100%;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .cover {
+    display: none;
+  }
+
+  .login-form {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .login-form {
+    width: 90%;
+  }
+
+  .form-footer {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 }
 </style>
