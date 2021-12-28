@@ -257,7 +257,7 @@ export default {
 
   .login-form input[type="text"],
   .login-form input[type="password"] {
-    width: 100%;
+    width: calc(100% - 1.5rem);
   }
 
   .btn {
@@ -281,6 +281,11 @@ export default {
 @media screen and (max-width: 760px) {
   .container {
     grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .form {
+    padding: 1rem 2rem;
   }
 
   .cover {
