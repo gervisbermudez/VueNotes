@@ -145,6 +145,7 @@ export default {
               type="password"
               name="password"
               v-model="password"
+              @keyup.enter="handleClick"
               placeholder="Enter your password"
             />
           </div>
