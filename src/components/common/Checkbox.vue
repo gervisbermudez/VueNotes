@@ -2,7 +2,11 @@
   <div class="input-form">
     <label class="checkbox-container"
       >{{ label }}
-      <input type="checkbox" :checked="checked" />
+      <input
+        type="checkbox"
+        :checked="checked"
+        v-on:change="$emit('change', $event)"
+      />
       <span class="checkmark"></span>
     </label>
   </div>
@@ -11,12 +15,7 @@
 <script>
 export default {
   name: "Checkbox",
-  props: ["label"],
-  data() {
-    return {
-      checked: false,
-    };
-  },
+  props: ["label", 'checked'],
 };
 </script>
 

@@ -44,7 +44,7 @@ export default {
 .alert {
   position: relative;
   padding: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
+  margin: 1rem 0px;
   border: 1px solid transparent;
   border-radius: 0.25rem;
   color: var(--white);

@@ -1,25 +1,38 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HelloWorld from "../components/HelloWorld.vue";
-import LoginLayout from '../layout/LoginLayout.vue'
+import { Auth } from '../helpers/auth';
 
 const routes = [
     {
         path: "/",
-        component: HelloWorld,
+        component: () => import("../components/HelloWorld.vue"),
+        meta: {
+            requiresAuth: true,
+        },
     },
     {
         path: "/login",
-        component: LoginLayout,
+        component: () => import('../layout/LoginLayout.vue'),
     },
-    {
-        path: "/register",
-        component: LoginLayout,
-    }
 ];
 
 const router = createRouter({
     history: createWebHistory(),
     routes,
+});
+
+router.beforeEach((to, _from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        if (Auth.isLoggedIn()) {
+            next();
+        } else {
+            next({
+                path: '/login',
+                query: { redirect: to.fullPath },
+            });
+        }
+    } else {
+        next();
+    }
 });
 
 export default router;

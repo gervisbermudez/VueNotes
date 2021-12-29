@@ -1,8 +1,15 @@
 <script>
+import { mapActions } from "vuex";
+import axios from "axios";
+
+import Storage from "../helpers/storage";
+
 import Checkbox from "../components/common/Checkbox.vue";
 import Spinner from "../components/common/Spinner.vue";
 import Alert from "../components/common/Alert.vue";
-import axios from "axios";
+
+const storage = new Storage();
+
 export default {
   name: "AuthLayout",
   components: {
@@ -13,9 +20,12 @@ export default {
   data() {
     return {
       year: new Date().getFullYear(),
+      BASE_URL: '',
       username: "",
       password: "",
       showSpinner: false,
+      rememberMe: false,
+      rememberMeData: {},
       alertData: {
         show: false,
         title: "",
@@ -24,39 +34,82 @@ export default {
       },
     };
   },
+  beforeCreate() {
+    storage.removeItem("userdata");
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.BASE_URL = process.env.VUE_APP_API_URL
+      storage.getItem("rememberMe")
+        .then((data) => {
+          this.rememberMe = true;
+          this.username = data.email;
+          this.rememberMeData = data;
+        })
+        .catch((error) => {});
+    });
+  },
   methods: {
+    ...mapActions({
+      setUserdata: "setUserdata",
+    }),
     handleLogin() {
+      if(!this.username && !this.password){
+            this.showAlert({content: 'Ingrese sus credenciales'});
+        return;
+      }
       this.showSpinner = true;
       const params = new URLSearchParams();
       params.append("username", this.username);
       params.append("password", this.password);
       axios
-        .post(process.env.API_URL + "/api/v1/login", params, {
+        .post(this.BASE_URL + "/api/v1/login", params, {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
           },
         })
         .then(({ data }) => {
-          console.log(data);
+          let userdata = data.userdata[0];
           this.showSpinner = false;
-          localStorage.setItem("userdata", JSON.stringify(data.userdata));
-          localStorage.setItem("token", JSON.stringify(data.token));
+          storage.setItem("userdata", userdata);
+          storage.setItem("token", data.token);
+          this.setUserdata(userdata);
+          this.setRemerberMeData({data: userdata.user_data});
+
           this.$router.push("/");
         })
         .catch((error) => {
+          console.error(error);
           this.showSpinner = false;
-          this.alertData.show = true;
-          this.alertData.content = error.response.data.error_message;
-          this.alertData.alertType = "danger";
+            this.showAlert({content: error.response.data.error_message, alertType: "danger"});
         });
+    },
+    showAlert({content, alertType = 'info'}){
+          this.alertData.show = true;
+          this.alertData.alertType = alertType;
+          this.alertData.content = content || "Ocurrió un error inesperado";
+    },
+    handleClick({ target }) {
+      this.rememberMe = target.checked;
+      this.setRemerberMeData({});
+    },
+    setRemerberMeData({ data }) {
+      if (this.rememberMe) {
+        storage.setItem("rememberMe", {
+          email: this.username,
+          ...data,
+        });
+      } else {
+        storage.removeItem("rememberMe");
+      }
     },
   },
 };
 </script>
 
 <template>
-  <div class="container">
+  <div class="login-container">
     <div class="form">
       <div class="form-head">
         <div class="logo">
@@ -67,7 +120,7 @@ export default {
       <div class="login-form">
         <h1>Sign in</h1>
         <div v-show="!showSpinner">
-          <div class="input-form">
+          <div class="input-form" v-if="!rememberMeData.email">
             <label for="email">Email</label>
             <input
               type="text"
@@ -75,6 +128,14 @@ export default {
               name="email"
               placeholder="email@domain.com"
             />
+          </div>
+          <div class="flex-center" v-else>
+            <span>
+              <div class="avatar"><img :src="this.BASE_URL + rememberMeData.avatar" /></div>
+              <b>
+                {{`${rememberMeData.nombre} ${rememberMeData.apellido}`}}
+              </b>
+            </span>
           </div>
           <div class="input-form">
             <label for="password">Password</label>
@@ -86,7 +147,7 @@ export default {
             />
           </div>
           <div class="form-footer">
-            <Checkbox :label="'Remember me'" />
+            <Checkbox :label="'Remember me'" :checked="rememberMe" v-on:change="handleClick" />
             <a href="#!">Forget password?</a>
           </div>
         </div>
@@ -122,7 +183,7 @@ export default {
 </template>
 
 <style>
-.container {
+.login-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
@@ -235,8 +296,22 @@ export default {
   font-size: 0.7rem;
 }
 
+.avatar {
+    width: 70px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 1rem;
+}
+
+.avatar img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
 @media screen and (max-width: 1200px) {
-  .container {
+  .login-container {
     grid-template-columns: 1.2fr 1fr;
   }
 
@@ -279,7 +354,7 @@ export default {
 }
 
 @media screen and (max-width: 760px) {
-  .container {
+  .login-container {
     grid-template-columns: 1fr;
     align-items: start;
   }
