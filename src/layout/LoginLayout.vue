@@ -46,7 +46,9 @@ export default {
           this.username = data.email;
           this.rememberMeData = data;
         })
-        .catch((error) => {});
+        .catch((error) => {
+          console.error(error);
+        });
     });
   },
   methods: {
