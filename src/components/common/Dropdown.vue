@@ -71,7 +71,7 @@ export default {
   background: #fff;
   position: absolute;
   right: 0;
-  box-shadow: 2px 2px 5px #ccc;
+  box-shadow: 2px 2px 5px #cccccc45;
 }
 
 .dropdown-menu a {
