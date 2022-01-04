@@ -82,9 +82,12 @@ export default {
           this.$router.push("/");
         })
         .catch((error) => {
-          console.error(error);
           this.showSpinner = false;
+          if(error.response){
             this.showAlert({content: error.response.data.error_message, alertType: "danger"});
+          }else{
+            this.showAlert({content: null, alertType: "danger"});
+          }
         });
     },
     showAlert({content, alertType = 'info'}){
