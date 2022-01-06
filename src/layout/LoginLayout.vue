@@ -46,8 +46,10 @@ export default {
           this.username = data.email;
           this.rememberMeData = data;
         })
-        .catch((error) => {
-          console.error(error);
+        .catch(() => {
+          this.rememberMe = false;
+          this.username = '';
+          this.rememberMeData = {};
         });
     });
   },
@@ -82,9 +84,12 @@ export default {
           this.$router.push("/");
         })
         .catch((error) => {
-          console.error(error);
           this.showSpinner = false;
+          if(error.response){
             this.showAlert({content: error.response.data.error_message, alertType: "danger"});
+          }else{
+            this.showAlert({content: null, alertType: "danger"});
+          }
         });
     },
     showAlert({content, alertType = 'info'}){
@@ -145,6 +150,7 @@ export default {
               type="password"
               name="password"
               v-model="password"
+              @keyup.enter="handleClick"
               placeholder="Enter your password"
             />
           </div>
