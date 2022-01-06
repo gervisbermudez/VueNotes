@@ -1,6 +1,6 @@
-
 <script>
 import { mapActions } from "vuex";
+import { mapGetters } from "vuex";
 import userWidget from "./common/UserWidget";
 export default {
   components: { userWidget },
@@ -10,14 +10,18 @@ export default {
       fetchNotes: "fetchNotes",
     }),
   },
-   mounted() {
+  computed: {
+    ...mapGetters({
+      notes: "getNotes",
+    }),
+  },
+  mounted() {
     this.$nextTick(() => {
       this.fetchNotes();
     });
   },
 };
 </script>
-
 
 <template>
   <div class="container">
@@ -30,7 +34,7 @@ export default {
       </div>
     </nav>
     <div class="main-content">
-      <router-view></router-view>
+      <router-view v-bind:notes="notes"></router-view>
     </div>
   </div>
 </template>

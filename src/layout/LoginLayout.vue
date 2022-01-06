@@ -46,8 +46,10 @@ export default {
           this.username = data.email;
           this.rememberMeData = data;
         })
-        .catch((error) => {
-          console.error(error);
+        .catch(() => {
+          this.rememberMe = false;
+          this.username = '';
+          this.rememberMeData = {};
         });
     });
   },

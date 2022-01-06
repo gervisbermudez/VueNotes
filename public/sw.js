@@ -19,6 +19,7 @@ const APP_SHELL_INMUTABLE = [
 ];
 
 const CACHE_ROUTES = ["/api"];
+const NOT_CACHE_ROUTES = ["/login"];
 
 /**
  * Check if a url string is a imagen requets
@@ -119,7 +120,7 @@ self.addEventListener("fetch", (event) => {
   if (event.request.url.indexOf("chrome-extension:") === 0) return;
   let respuesta;
   if (event.request.method === "POST") {
-    if (!CACHE_ROUTES.some((route) => event.request.url.includes(route))) {
+    if (!CACHE_ROUTES.some((route) => event.request.url.includes(route)) || NOT_CACHE_ROUTES.some((route) => event.request.url.includes(route))) {
       respuesta = fetch(event.request);
       return;
     }

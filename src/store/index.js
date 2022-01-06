@@ -1,6 +1,4 @@
 import { createStore } from "vuex";
-import axios from "axios";
-
 
 const SET_USERDATA = "SET_USERDATA";
 const FETCH_NOTES = "FETCH_NOTES";
@@ -20,19 +18,19 @@ const store = createStore({
       state.notes = payload;
     },
   },
+  getters: {
+    getNotes: state => {
+      return state.notes;
+    }
+  },
   actions: {
-    fetchNotes({ commit }) {
-      axios
-        .get(process.env.VUE_APP_API_URL + "/api/v1/notes", {
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-            "Authorization": localStorage.getItem("token"),
-            "Accept": "application/json",
-          },
-        }).then(response => {
-          commit(FETCH_NOTES, response.data.data)
-          console.log(response)
+    fetchNotes({commit}) {
+      fetch(process.env.VUE_APP_API_URL + "/api/v1/notes").then(response => response.json()).then(response => {
+        commit(FETCH_NOTES, {
+          ...response.data
         })
+      });
+      return;
     },
     setUserdata({ commit }, payload) {
       commit(SET_USERDATA, {
